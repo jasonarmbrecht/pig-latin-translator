@@ -19,15 +19,15 @@ vowels = ("a","e","i","o","u")
 pyg1 = "ay"
 pyg2 = "way"
 
-# Define variable for file path to translation history stored in text file.
+# Define variable for file path to translation history stored in text file (history.txt).
 file_path = Path(__file__).with_name('history.txt')
 
-# Function to open or create a file and write the translation to the new word list.
+# Function to open or create a file and write the new translation to history.txt.
 def file_write():
     file_path.open('a+').write(" ".join(new_word_list) + "\n")
     file_path.open('a+').close()
 
-# Function to read the translation history text file and retieve and print the last 3 translations.
+# Function to read the translation history text file and retieve and print the last 3 translations from history.txt.
 def file_read():
     for line in reversed(list(file_path.open('rt').readlines() [-3:])):
         print(line.rstrip())

@@ -11,6 +11,7 @@
 # Import the sys module to use the exit() function.
 import sys
 
+# Import Path from pathlib module in order to use path function for file read and write.
 from pathlib import Path
 
 # Define variables for vowels (in a list) and the 'ay' and 'way' sounds.

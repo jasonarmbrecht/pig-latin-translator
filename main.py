@@ -100,7 +100,7 @@ while True:
             new_word = new_word[1:] 
             new_word_list.append(new_word.lower())
         
-        # Print the final translation and allow the user to press the ENTER key to go back to the user input stage.
+        # Print the final translation, record to history.txt and allow the user to press the ENTER key to go back to the user input stage.
         print("\n")
         print("**********************")
         print('\x1b[0;34;40m' + "Pig Latin translation: " + '\x1b[1;37;40m'," ".join(new_word_list) + " " + '\x1b[0m')

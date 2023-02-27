@@ -30,15 +30,16 @@ def file_read():
 
 # Function to handle the translation.
 def pig_latin(word):
+    # Define the vowels into a variable. Capitals are also defined just incase the word(s) are capitalised.
     vowels = "aeiouAEIOU"
     if word[0] not in vowels and word[1] in vowels:
-        # If word starts with a consonant and a vowel
+        # If word starts with a consonant and a vowel, move first letter to the end and add "ay".
         return word[1:] + word[0] + "ay"
     elif word[0] not in vowels and word[1] not in vowels:
-        # If word starts with two consonants
+        # If word starts with two consonants, move the first two letters to tne end of the word and add "ay".
         return word[2:] + word[0:2] + "ay"
     else:
-        # If word starts with a vowel
+        # If word starts with a vowel, just add "way" to the end of the word.
         return word + "way"
 
 # Start of the main program inside a while loop which conducts basic validation on input and if the user requests to exit the program or view translation history.

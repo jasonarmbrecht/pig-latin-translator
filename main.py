@@ -3,9 +3,10 @@
 #  Application:    Pig Latin Translator
 #  Created by:     Jason Armbrecht (Junior Programmer, Skillage IT)
 #  Contact:        jason.armbrecht@gmail.com
-#  Date created:   14-NOV-2022
-
+#  Date created:   14-NOV-2022 (Last updated 27-FEB-2023)
+#  Development:    https://github.com/jasonarmbrecht/pig-latin-translator/
 #  Requirements:   Create and test a python program which takes a word or phrase, converts it to Pig Latin and displays the output.
+#  Note:           This program will create a text file in the same folder that the program is located. It is to store translation history.
 
 
 # Import the sys module to use the exit() function.

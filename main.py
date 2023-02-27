@@ -14,11 +14,6 @@ import sys
 # Import Path from pathlib module in order to use path function for file read and write.
 from pathlib import Path
 
-# Define variables for vowels (in a list) and the 'ay' and 'way' sounds.
-vowels = ("a","e","i","o","u")
-pyg1 = "ay"
-pyg2 = "way"
-
 # Define variable for file path to translation history stored in text file (history.txt).
 file_path = Path(__file__).with_name('history.txt')
 
@@ -32,6 +27,19 @@ def file_read():
     for line in reversed(list(file_path.open('rt').readlines() [-3:])):
         print(line.rstrip())
         file_path.open('rt').close()
+
+# Function to handle the translation.
+def pig_latin(word):
+    vowels = "aeiouAEIOU"
+    if word[0] not in vowels and word[1] in vowels:
+        # If word starts with a consonant and a vowel
+        return word[1:] + word[0] + "ay"
+    elif word[0] not in vowels and word[1] not in vowels:
+        # If word starts with two consonants
+        return word[2:] + word[0:2] + "ay"
+    else:
+        # If word starts with a vowel
+        return word + "way"
 
 # Start of the main program inside a while loop which conducts basic validation on input and if the user requests to exit the program or view translation history.
 while True: 
@@ -75,31 +83,13 @@ while True:
     # If the user input is not blank, contains no numbers or special characters then continue with code execution, 
     # otherwise go to the very last 'else' statement.
     elif user_input != '' and user_input.replace(" ","").isalpha():
-        
-        # If the user input is a phrase with multiple words then split the words and check if the first character of each is a vowel.
-        # If so, create a new word by adding "way" to the end of the original word. 
-        if len(user_input.split()) > 1: 
-            for word in user_input.split(): 
-                if word.startswith(vowels): 
-                    new_word = word.lower() + pyg2
-                
-                # If the phrase with multiple words contains a word which does not start with a vowel, move the first character
-                # to the end of the word and append "ay" to the end.
-                else:
-                    first_letter = word[0]
-                    new_word = word.lower() + first_letter + pyg1
-                    new_word = new_word[1:]
-                
-                # Save each word modified in the above 'for loop' to the new word list.
-                new_word_list.append(new_word.lower())
-        
-        # If the user input was a single word, move the first character to the end of the word and append "ay" to the end.
+        if len(user_input.split()) > 1:
+            for word in user_input.split():
+                new_word_list.append(pig_latin(word).lower())
         else:
-            first_letter = user_input[0] 
-            new_word = user_input.lower() + first_letter + pyg1 
-            new_word = new_word[1:] 
-            new_word_list.append(new_word.lower())
-        
+            new_word_list.append(pig_latin(user_input).lower())
+
+
         # Print the final translation, record to history.txt and allow the user to press the ENTER key to go back to the user input stage.
         print("\n")
         print("**********************")
